@@ -50,9 +50,9 @@ body {
 .triangle-box {
     width: 0;
     height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid rgba(255, 255, 255, 0.95);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 160px solid rgba(255, 255, 255, 0.95);
     display: flex;
     justify-content: center;
     position: relative;
@@ -61,15 +61,17 @@ body {
 
 .height-value {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 24px;
+    font-size: 40px;
     font-weight: 700;
     color: #764ba2;
     text-align: center;
     white-space: nowrap;
     user-select: none;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
 }
 
 /* ============================================
@@ -157,7 +159,7 @@ body {
     }
 
     .height-value {
-        font-size: 28px;
+        font-size: 48px;
     }
 
     .timer-circle {
@@ -170,9 +172,9 @@ body {
     }
 
     .triangle-box {
-        border-left: 80px solid transparent;
-        border-right: 80px solid transparent;
-        border-bottom: 120px solid rgba(255, 255, 255, 0.95);
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        border-bottom: 190px solid rgba(255, 255, 255, 0.95);
     }
 
     .control-button {
@@ -187,7 +189,7 @@ body {
 
 @media (min-width: 900px) {
     .height-value {
-        font-size: 32px;
+        font-size: 56px;
     }
 
     .timer-circle {
@@ -200,9 +202,9 @@ body {
     }
 
     .triangle-box {
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-bottom: 140px solid rgba(255, 255, 255, 0.95);
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-bottom: 220px solid rgba(255, 255, 255, 0.95);
     }
 }
 
