@@ -17,8 +17,17 @@ const timerState = {
     isRunning: false,
     startTime: null,
     elapsedTime: 0,
-    animationFrameId: null
+    animationFrameId: null,
+    heightInMeters: 0  // Store the calculated height in meters
 };
+
+/**
+ * Unit Toggle State
+ * isMeters = true: display in meters (m)
+ * isMeters = false: display in feet (ft)
+ */
+let isMeters = true;
+const FEET_CONVERSION = 3.28084;  // 1 meter = 3.28084 feet
 
 /**
  * DOM Elements
@@ -28,10 +37,11 @@ const heightValue = document.getElementById('heightValue');
 const controlButton = document.getElementById('controlButton');
 
 /**
- * Initialize: Add event listener to the control button
+ * Initialize: Add event listeners
  */
 document.addEventListener('DOMContentLoaded', function() {
     controlButton.addEventListener('click', handleButtonClick);
+    heightValue.addEventListener('click', toggleUnit);
     updateDisplay();
 });
 
@@ -95,6 +105,8 @@ function resetTimer() {
     timerState.isRunning = false;
     timerState.startTime = null;
     timerState.elapsedTime = 0;
+    timerState.heightInMeters = 0;
+    isMeters = true;  // Reset to meters on reset
     
     if (timerState.animationFrameId) {
         cancelAnimationFrame(timerState.animationFrameId);
@@ -129,6 +141,11 @@ function updateDisplay() {
     // Format time to 2 decimal places (e.g., 1.25 s)
     const formattedTime = timerState.elapsedTime.toFixed(2);
     timerDisplay.textContent = `${formattedTime} s`;
+    
+    // Also update height display if it exists
+    if (timerState.heightInMeters > 0) {
+        displayHeight();
+    }
 }
 
 /**
@@ -150,11 +167,36 @@ function calculateHeight() {
     const t = timerState.elapsedTime; // Time in seconds
     
     // Apply physics formula: h = (1/2) * g * t²
-    const height = (0.5 * GRAVITY * t * t);
+    timerState.heightInMeters = (0.5 * GRAVITY * t * t);
     
-    // Format and display height to 1 decimal place
-    const formattedHeight = height.toFixed(1);
-    heightValue.textContent = `Height: ${formattedHeight} m`;
+    // Display the height in the current unit
+    displayHeight();
+}
+
+/**
+ * Display Height in Current Unit
+ * Shows height in meters or feet based on isMeters flag
+ * Format: "45.20 m" or "148.30 ft"
+ */
+function displayHeight() {
+    if (isMeters) {
+        const heightM = timerState.heightInMeters.toFixed(2);
+        heightValue.textContent = `${heightM} m`;
+    } else {
+        const heightFt = (timerState.heightInMeters * FEET_CONVERSION).toFixed(2);
+        heightValue.textContent = `${heightFt} ft`;
+    }
+}
+
+/**
+ * Toggle Unit Between Meters and Feet
+ * User clicks the height display to switch units
+ */
+function toggleUnit() {
+    if (timerState.heightInMeters > 0) {  // Only toggle if height has been calculated
+        isMeters = !isMeters;
+        displayHeight();
+    }
 }
 
 /**
