@@ -20,6 +20,24 @@ Where:
 🎯 Instant height calculation  
 🎨 Clean, modern interface with intuitive controls  
 ⚡ No dependencies—runs immediately in any browser  
+🔄 **Unit Toggle**: Click the height display to convert between meters and feet  
+
+## Unit Conversion
+
+The app supports two measurement units:
+
+- **Meters (m)** - SI standard unit
+- **Feet (ft)** - Imperial/US customary unit
+
+**Conversion Formula:**
+- 1 meter = 3.28084 feet
+
+**How to Toggle Units:**
+1. After the timer stops and height is calculated
+2. Click or tap the height display (the white triangle at the top)
+3. The height instantly converts between meters and feet
+4. Click again to toggle back
+5. Each measurement is formatted to 2 decimal places (e.g., 45.20 m or 148.30 ft)
 
 ## Try It Now
 
@@ -40,7 +58,8 @@ This is an **educational physics tool** for demonstration purposes only. Please 
 2. Drop an object and press **"Start Timer"**
 3. Press **"Stop Timer"** when the object hits the ground
 4. The app calculates and displays the height instantly
-5. Press **"Reset"** to measure again
+5. **Optional**: Click the height display to toggle between meters (m) and feet (ft)
+6. Press **"Reset"** to measure again
 
 ## Technical Details
 
