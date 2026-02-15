@@ -48,8 +48,8 @@ body {
 }
 
 .triangle-box {
-    width: 240px;
-    height: 220px;
+    width: 320px;
+    height: 300px;
     background: rgba(255, 255, 255, 0.95);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     display: flex;
@@ -67,7 +67,7 @@ body {
 }
 
 .height-value {
-    font-size: 44px;
+    font-size: 56px;
     font-weight: 700;
     color: #764ba2;
     text-align: center;
@@ -162,12 +162,12 @@ body {
     }
 
     .height-value {
-        font-size: 56px;
+        font-size: 68px;
     }
 
     .triangle-box {
-        width: 320px;
-        height: 280px;
+        width: 420px;
+        height: 380px;
     }
 
     .timer-circle {
@@ -191,12 +191,12 @@ body {
 
 @media (min-width: 900px) {
     .height-value {
-        font-size: 64px;
+        font-size: 76px;
     }
 
     .triangle-box {
-        width: 380px;
-        height: 320px;
+        width: 480px;
+        height: 420px;
     }
 
     .timer-circle {
