@@ -1,5 +1,5 @@
 /* ============================================
-   Cliff Timer - Mobile-First Responsive Design
+   Cliff Timer - Optimized Responsive Design
    ============================================ */
 
 /* Reset and Global Styles */
@@ -14,7 +14,7 @@ html, body {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    overflow: hidden;
+    overflow: hidden; /* Keeps everything contained */
 }
 
 body {
@@ -29,27 +29,29 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Spreads top, middle, bottom evenly */
     align-items: center;
     padding: 20px;
-    max-width: 900px;
+    max-width: 600px; /* Reduced max-width for better vertical flow */
+    gap: 10px;
 }
 
 /* ============================================
-   Top Section: Triangular Height Display
+   Top Section: Height Display (The Rectangle)
    ============================================ */
 
 .height-display {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 15px 0;
+    padding: 10px 0;
     flex-shrink: 0;
 }
 
 .triangle-box {
-    width: 560px;
-    height: 525px;
+    width: 90%; /* Responsive width */
+    max-width: 450px; 
+    height: 160px; /* MODERATE HEIGHT: drastically reduced from 525px */
     background: rgba(255, 255, 255, 0.95);
     display: flex;
     justify-content: center;
@@ -63,11 +65,10 @@ body {
 
 .triangle-box:active {
     transform: scale(0.98);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .height-value {
-    font-size: 98px;
+    font-size: 64px; /* Scaled down to fit the new box */
     font-weight: 700;
     color: #764ba2;
     text-align: center;
@@ -82,35 +83,32 @@ body {
    ============================================ */
 
 .timer-section {
-    flex: 1;
+    flex: 1; /* Takes up remaining middle space */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
 }
 
 .timer-circle {
-    width: 220px;
-    height: 220px;
+    width: 180px; /* Slightly smaller for mobile safety */
+    height: 180px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 8px solid rgba(255, 255, 255, 0.5);
+    border: 6px solid rgba(255, 255, 255, 0.5);
     position: relative;
 }
 
 .timer-text {
-    font-size: 52px;
+    font-size: 40px;
     font-weight: 700;
     color: #667eea;
     text-align: center;
     font-family: 'Courier New', monospace;
-    user-select: none;
-    letter-spacing: 2px;
 }
 
 /* ============================================
@@ -121,15 +119,15 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 10px 0 20px 0;
     flex-shrink: 0;
 }
 
 .control-button {
     width: 100%;
-    max-width: 300px;
-    padding: 18px 40px;
-    font-size: 20px;
+    max-width: 280px;
+    padding: 15px 30px;
+    font-size: 18px;
     font-weight: 700;
     color: white;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -137,105 +135,42 @@ body {
     border-radius: 15px;
     cursor: pointer;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    touch-action: manipulation;
-    user-select: none;
-    will-change: transform;
-}
-
-.control-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.control-button:hover {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 /* ============================================
-   Responsive Design: Tablet and Larger
+   Responsive Design: Desktop / Large Screens
    ============================================ */
 
-@media (min-width: 600px) {
-    .container {
-        padding: 30px;
-    }
-
-    .height-value {
-        font-size: 119px;
-    }
-
+@media (min-height: 700px) {
+    /* If the screen is tall enough, we can make things a bit larger */
     .triangle-box {
-        width: 735px;
-        height: 665px;
+        height: 200px;
     }
-
+    .height-value {
+        font-size: 80px;
+    }
     .timer-circle {
-        width: 260px;
-        height: 260px;
-    }
-
-    .timer-text {
-        font-size: 60px;
-    }
-
-    .control-button {
-        font-size: 22px;
-        padding: 20px 50px;
+        width: 220px;
+        height: 220px;
     }
 }
-
-/* ============================================
-   Responsive Design: Large Desktop
-   ============================================ */
 
 @media (min-width: 900px) {
-    .height-value {
-        font-size: 133px;
+    .container {
+        max-width: 800px;
     }
-
     .triangle-box {
-        width: 840px;
-        height: 735px;
+        height: 240px;
+        max-width: 600px;
     }
-
-    .timer-circle {
-        width: 300px;
-        height: 300px;
-    }
-
-    .timer-text {
-        font-size: 68px;
+    .height-value {
+        font-size: 100px;
     }
 }
 
-/* ============================================
-   Accessibility and Touch Optimizations
-   ============================================ */
-
-@media (hover: none) and (pointer: coarse) {
-    .control-button {
-        min-height: 48px;
-        min-width: 48px;
-    }
-
-    .timer-circle {
-        min-height: 180px;
-        min-width: 180px;
-    }
-}
-
-/* Disable text selection on interactive elements */
-.height-value,
-.timer-text,
-.control-button {
+/* Accessibility */
+.height-value, .timer-text, .control-button {
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-}
-
-/* Smooth scrolling and transitions */
-html {
-    scroll-behavior: smooth;
 }
